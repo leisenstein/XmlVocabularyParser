@@ -1,7 +1,0 @@
-c:\users\leisenstein\documents\visual studio 2013\Projects\XmlVocabularyParser\XmlVocabularyParser\bin\Debug\XmlVocabularyParser.exe.config
-C:\GitHub\XmlVocabularyParser\XmlVocabularyParser\bin\Debug\XmlVocabularyParser.exe.config
-C:\GitHub\XmlVocabularyParser\XmlVocabularyParser\obj\Debug\XmlVocabularyParser.csprojResolveAssemblyReference.cache
-C:\GitHub\XmlVocabularyParser\XmlVocabularyParser\bin\Debug\XmlVocabularyParser.exe
-C:\GitHub\XmlVocabularyParser\XmlVocabularyParser\bin\Debug\XmlVocabularyParser.pdb
-C:\GitHub\XmlVocabularyParser\XmlVocabularyParser\obj\Debug\XmlVocabularyParser.exe
-C:\GitHub\XmlVocabularyParser\XmlVocabularyParser\obj\Debug\XmlVocabularyParser.pdb
