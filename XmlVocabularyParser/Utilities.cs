@@ -9,7 +9,7 @@ namespace XmlVocabularyParser
 {
     public static class Utilities
     {
-        public XmlDocument ConvertToXmlDocument(string xml)
+        public static XmlDocument ConvertToXmlDocument(string xml)
         {
             XmlDocument xd = new XmlDocument();
             xd.LoadXml(xml);
