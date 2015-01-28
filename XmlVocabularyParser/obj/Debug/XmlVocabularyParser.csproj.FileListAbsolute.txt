@@ -1,0 +1,1 @@
+c:\users\leisenstein\documents\visual studio 2013\Projects\XmlVocabularyParser\XmlVocabularyParser\bin\Debug\XmlVocabularyParser.exe.config
