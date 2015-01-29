@@ -7,49 +7,42 @@ using System.Xml;
 
 namespace XmlVocabularyParser
 {
-    class BoolProperty : IProperty
+    class StringProperty : IProperty
     {
         public int Id { get; set; }
         public string PropertyType { get; set; }
         public string Key { get; set; }
         public string Prompt { get; set; }
-        public string Declaration { get; set; }
-        public string Explanation { get; set; }
+        public string Declaration { get; set; }  // Optional
 
-        public BoolProperty()
+        public StringProperty()
         {
 
         }
-      
 
         public void Process(XmlNode n)
         {
+            StringProperty sp = new StringProperty();
             var _type = n.Name;
             var _key = n["Key"].InnerText;
             var _prompt = n["Prompt"].InnerText;
-            var _explanation = n["Explanation"] != null ? n["Explanation"].InnerText : "";
+
             var _declaration = n["Declaration"] != null ? n["Declaration"].InnerText : "";
+            
 
             this.Id = -999;
-            this.PropertyType = "Bool";
+            this.PropertyType = "String";
             this.Key = _key;
             this.Prompt = _prompt;
             this.Declaration = _declaration;
-            this.Explanation = _explanation;
-
-
-            // return this;
         }
+
 
         public override string ToString()
         {
-            // if in BoolPropertyGroup, add and extra tab
             string val = "";
-
-            val += Utilities.tab2 + this.Key + "|" + this.Declaration + "|" + this.Explanation;
-
+            val += Utilities.tab2 + this.Key + "|" + this.Declaration;
             return val;
         }
-        
     }
 }

@@ -7,49 +7,45 @@ using System.Xml;
 
 namespace XmlVocabularyParser
 {
-    class BoolProperty : IProperty
+    class FloatProperty : IProperty
     {
         public int Id { get; set; }
         public string PropertyType { get; set; }
         public string Key { get; set; }
         public string Prompt { get; set; }
         public string Declaration { get; set; }
-        public string Explanation { get; set; }
+        public int RangeMin { get; set; }
+        public int RangeMax { get; set; }
 
-        public BoolProperty()
+        public FloatProperty()
         {
-
+            
         }
-      
-
         public void Process(XmlNode n)
         {
             var _type = n.Name;
             var _key = n["Key"].InnerText;
             var _prompt = n["Prompt"].InnerText;
-            var _explanation = n["Explanation"] != null ? n["Explanation"].InnerText : "";
             var _declaration = n["Declaration"] != null ? n["Declaration"].InnerText : "";
+            var _rangemin = n["RangeValidator"].GetAttribute("min");
+            var _rangemax = n["RangeValidator"].GetAttribute("max");
 
             this.Id = -999;
-            this.PropertyType = "Bool";
+            this.PropertyType = "Float";
             this.Key = _key;
             this.Prompt = _prompt;
             this.Declaration = _declaration;
-            this.Explanation = _explanation;
-
-
-            // return this;
+            this.RangeMin = Convert.ToInt32(_rangemin);
+            this.RangeMax = Convert.ToInt32(_rangemax);
         }
+
 
         public override string ToString()
         {
-            // if in BoolPropertyGroup, add and extra tab
             string val = "";
-
-            val += Utilities.tab2 + this.Key + "|" + this.Declaration + "|" + this.Explanation;
-
+            val += Utilities.tab2 + this.Key + "|" + this.Declaration;
             return val;
         }
-        
+
     }
 }
