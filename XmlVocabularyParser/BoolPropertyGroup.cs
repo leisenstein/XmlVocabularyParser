@@ -41,12 +41,12 @@ namespace XmlVocabularyParser
 
 
             XmlNodeList boolProperties = newNode.SelectNodes("/BoolPropertyGroup/BoolProperty");
-            Console.WriteLine(this.ToString());
+            Utilities.WriteToOutput(this.ToString());
             foreach (XmlNode bp in boolProperties)
             {
                 BoolProperty prop = new BoolProperty();
                 prop.Process(bp);
-                Console.WriteLine(Utilities.tab1 + prop.ToString());
+                Utilities.WriteToOutput(Utilities.tab1 + prop.ToString(), @Program._OUTPUTFILEPATH);
 
                 BoolProperties.Add(prop);
             }

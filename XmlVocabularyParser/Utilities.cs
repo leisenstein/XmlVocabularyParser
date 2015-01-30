@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.IO;
 
 namespace XmlVocabularyParser
 {
@@ -37,8 +38,21 @@ namespace XmlVocabularyParser
             return xmlcontent;
         }
 
+        public static void WriteToOutput(string content) 
+        {
+            Console.WriteLine(content);
+        }
 
-
+        public static void WriteToOutput(string content, string filepath)
+        {
+            WriteStringToFile(content, filepath);
+        }
+        public static void WriteStringToFile(string content, string filepath)
+        {
+                String[] arrContent = { content };
+                System.IO.File.AppendAllLines(filepath, arrContent);
+            
+        }
 
     }
 }

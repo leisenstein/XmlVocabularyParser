@@ -12,14 +12,17 @@ namespace XmlVocabularyParser
     class Program
     {
         public static TemplateVocabulary TV;
+        public static string _INPUTFILEPATH;
+        public static string _OUTPUTFILEPATH;
+
         static void Main(string[] args)
         {
             TV = new TemplateVocabulary();
-            string filepath;
             if (args != null && args.Length == 1)
             {
-                filepath = args[0];
-                XmlDocument doc = Utilities.ConvertFileToXmlDocument(@filepath);
+                _INPUTFILEPATH = args[0];
+                _OUTPUTFILEPATH = args[0] + ".OUT";
+                XmlDocument doc = Utilities.ConvertFileToXmlDocument(@_INPUTFILEPATH);
                 Program programInstance = new Program();
                 programInstance.ProcessRoot(doc);
             }
@@ -40,7 +43,7 @@ namespace XmlVocabularyParser
             TV.Label = firstLabel;
 
             XmlNodeList sections = x.GetElementsByTagName("Section");
-            Console.WriteLine(TV);
+            Utilities.WriteToOutput(TV.ToString(), @_OUTPUTFILEPATH);
             foreach (XmlNode n in sections)
             {
                 var sectionLabel = n.PreviousSibling.InnerText;
@@ -60,7 +63,7 @@ namespace XmlVocabularyParser
                 if (p.Name == "Label")
                 {
                     newSection.Label = p.InnerText;
-                    Console.WriteLine(newSection.ToString());
+                    Utilities.WriteToOutput(newSection.ToString(), @_OUTPUTFILEPATH);
                 }
                 else
                 {
@@ -83,12 +86,12 @@ namespace XmlVocabularyParser
                 case "BoolProperty":
                     prop = new BoolProperty();
                     prop.Process(n);
-                    Console.WriteLine(prop.ToString());
+                    Utilities.WriteToOutput(prop.ToString(), @_OUTPUTFILEPATH);
                     break;
                 case "IntProperty":
                     prop = new IntProperty();
                     prop.Process(n);
-                    Console.WriteLine(prop.ToString());
+                    Utilities.WriteToOutput(prop.ToString(), @_OUTPUTFILEPATH);
                     break;
                 case "BoolPropertyGroup":
                     prop = new BoolPropertyGroup();
@@ -97,7 +100,7 @@ namespace XmlVocabularyParser
                 case "StringProperty":
                     prop = new StringProperty();
                     prop.Process(n);
-                    Console.WriteLine(prop.ToString());
+                    Utilities.WriteToOutput(prop.ToString(), @_OUTPUTFILEPATH);
                     break;
                 default:
                     prop = null;
